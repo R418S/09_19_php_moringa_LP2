@@ -5,9 +5,9 @@
 
 // 受け取ったデータを変数に入れる
 $name = $_POST['name'];
-$name = $_POST['email'];
-$name = $_POST['subject'];
-$name = $_POST['message'];
+$email = $_POST['email'];
+$subject = $_POST['subject'];
+$message = $_POST['message'];
 
 include('functions.php'); // 関数を記述したファイルの読み込み
 $pdo = connect_to_db(); // 関数実行

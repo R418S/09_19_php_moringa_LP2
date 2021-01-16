@@ -28,8 +28,8 @@ if ($status == false) {
     // `.=`は後ろに文字列を追加する，の意味
     foreach ($result as $record) {
         $output .= "<tr>";
-        $output .= "<td>{$record["deadline"]}</td>";
-        $output .= "<td>{$record["users"]}</td>";
+        $output .= "<td>{$record["name"]}</td>";
+        $output .= "<td>{$record["subject"]}</td>";
         // edit deleteリンクを追加
         $output .= "<td><a href='users_edit.php?id={$record["id"]}'>edit</a></td>";
         $output .= "<td><a href='users_delete.php?id={$record["id"]}'>delete</a></td>";
@@ -58,8 +58,8 @@ if ($status == false) {
         <table>
             <thead>
                 <tr>
-                    <th>消去</th>
-                    <th>name</th>
+                    <th>名前</th>
+                    <th>題</th>
                     <th></th>
                     <th></th>
                 </tr>

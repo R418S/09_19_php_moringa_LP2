@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 2021 年 1 朁E14 日 15:24
+-- Generation Time: 2021 年 1 朁E16 日 14:24
 -- サーバのバージョン： 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -34,8 +34,6 @@ CREATE TABLE `contact_table` (
   `email` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
   `subject` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
   `message` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `is_admin` int(1) NOT NULL,
-  `is_deleted` int(1) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -44,9 +42,13 @@ CREATE TABLE `contact_table` (
 -- テーブルのデータのダンプ `contact_table`
 --
 
-INSERT INTO `contact_table` (`id`, `name`, `email`, `subject`, `message`, `is_admin`, `is_deleted`, `created_at`, `updated_at`) VALUES
-(1, 'shindo', '0418', '', '', 0, 0, '2021-01-09 16:32:47', '2021-01-09 16:32:47'),
-(2, '', '', '', '', 0, 0, '2021-01-09 16:33:30', '2021-01-09 16:33:30');
+INSERT INTO `contact_table` (`id`, `name`, `email`, `subject`, `message`, `created_at`, `updated_at`) VALUES
+(3, '進藤理恵', 'shindo@ohga-ph.com', '【大賀薬局】木馬館OPEN!!', 'うｓ５６ｈｙｓ５ｒ６ｔ', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(4, '進藤理恵', 'shindo@ohga-ph.com', '【大賀薬局】木馬館OPEN!!', 'うｓ５６ｈｙｓ５ｒ６ｔ', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(5, 'たなか', 'ばｆｍヴぁｐｋｒ', 'あｆｂかｒｋｇ', 'あいうえお', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(6, 'さよう', 'g@gmail.com', 'sbbjmo', 'あいうえお', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(7, 'afbzafgbv', ' b dfb', 'aefrgae', 'abfaerg', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(8, '進藤理恵', 'shindo@ohga-ph.com', 'こんにちは', 'sacasdweaws\r\n\r\nzwzatay', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -89,38 +91,48 @@ INSERT INTO `hobby_table` (`id`, `name`, `sex`, `hobby`) VALUES
 -- --------------------------------------------------------
 
 --
+-- テーブルの構造 `like_table`
+--
+
+CREATE TABLE `like_table` (
+  `id` int(12) NOT NULL,
+  `user_id` int(12) NOT NULL,
+  `todo_id` int(12) NOT NULL,
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- テーブルのデータのダンプ `like_table`
+--
+
+INSERT INTO `like_table` (`id`, `user_id`, `todo_id`, `created_at`) VALUES
+(6, 1, 9, '2021-01-16 17:17:44'),
+(7, 1, 14, '2021-01-16 17:17:45'),
+(8, 1, 15, '2021-01-16 17:17:45'),
+(9, 1, 17, '2021-01-16 17:17:46'),
+(12, 1, 7, '2021-01-16 17:26:54'),
+(13, 1, 8, '2021-01-16 17:26:55'),
+(15, 1, 13, '2021-01-16 17:26:58'),
+(16, 1, 16, '2021-01-16 17:27:00'),
+(17, 1, 6, '2021-01-16 17:27:03'),
+(23, 1, 12, '2021-01-16 19:58:32'),
+(24, 1, 11, '2021-01-16 19:58:33');
+
+-- --------------------------------------------------------
+
+--
 -- テーブルの構造 `manage_table`
 --
 
 CREATE TABLE `manage_table` (
   `id` int(12) NOT NULL,
-  `todo` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `deadline` date NOT NULL,
+  `manager` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `is_admin` int(1) NOT NULL,
+  `is_deleted` int(1) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- テーブルのデータのダンプ `manage_table`
---
-
-INSERT INTO `manage_table` (`id`, `todo`, `deadline`, `created_at`, `updated_at`) VALUES
-(6, '①ゴルフ', '2020-12-29', '2020-12-19 16:01:24', '2020-12-19 16:01:24'),
-(7, 'Makuake終了', '2021-01-11', '2020-12-19 16:03:18', '2020-12-19 16:03:18'),
-(8, 'kosgub', '2020-12-06', '2020-12-19 16:47:47', '2020-12-19 16:47:47'),
-(9, 'kosgub', '2020-12-06', '2020-12-19 16:47:50', '2020-12-19 16:47:50'),
-(11, 'ｚれほｓｓ', '2020-12-16', '2020-12-23 19:44:48', '2020-12-23 19:44:48'),
-(12, 'kokumin', '2020-12-22', '2020-12-26 15:09:10', '2020-12-26 17:35:23'),
-(13, 'kosgub', '2020-12-02', '2020-12-26 15:09:16', '2020-12-26 15:09:16'),
-(14, 'kaub', '2020-02-26', '2020-12-26 15:09:33', '2020-12-26 15:09:33'),
-(15, 'aiueo', '2020-12-08', '2020-12-26 17:03:20', '2020-12-26 17:03:20'),
-(16, 'zxvzxdvf', '2020-12-08', '2020-12-26 17:10:49', '2020-12-26 17:10:49'),
-(17, 'geragta', '2020-12-31', '2020-12-26 17:13:19', '2020-12-26 17:13:19'),
-(18, 'geragta', '2020-12-02', '2020-12-26 17:26:20', '2020-12-26 17:26:20'),
-(19, 'sasisu', '2020-12-27', '2020-12-26 17:35:40', '2020-12-26 17:35:56'),
-(20, 'geragta', '2020-12-29', '2021-01-01 14:28:49', '2021-01-01 14:28:49'),
-(21, 'kosgub', '2021-01-20', '2021-01-01 15:59:19', '2021-01-01 15:59:19'),
-(22, 'kosgub', '2020-12-29', '2021-01-03 19:26:50', '2021-01-03 19:26:50');
 
 -- --------------------------------------------------------
 
@@ -217,7 +229,9 @@ CREATE TABLE `users_table` (
 
 INSERT INTO `users_table` (`id`, `username`, `password`, `is_admin`, `is_deleted`, `created_at`, `updated_at`) VALUES
 (1, 'shindo', '0418', 0, 0, '2021-01-09 16:32:47', '2021-01-09 16:32:47'),
-(2, '', '', 0, 0, '2021-01-09 16:33:30', '2021-01-09 16:33:30');
+(2, '', '', 0, 0, '2021-01-09 16:33:30', '2021-01-09 16:33:30'),
+(3, '6', '6', 0, 0, '2021-01-16 15:31:55', '2021-01-16 15:31:55'),
+(4, 'i', 'i', 0, 0, '2021-01-16 15:55:16', '2021-01-16 15:55:16');
 
 --
 -- Indexes for dumped tables
@@ -233,6 +247,12 @@ ALTER TABLE `contact_table`
 -- Indexes for table `hobby_table`
 --
 ALTER TABLE `hobby_table`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `like_table`
+--
+ALTER TABLE `like_table`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -267,13 +287,19 @@ ALTER TABLE `users_table`
 -- AUTO_INCREMENT for table `contact_table`
 --
 ALTER TABLE `contact_table`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `hobby_table`
 --
 ALTER TABLE `hobby_table`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+
+--
+-- AUTO_INCREMENT for table `like_table`
+--
+ALTER TABLE `like_table`
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `manage_table`
@@ -297,7 +323,7 @@ ALTER TABLE `todo_table`
 -- AUTO_INCREMENT for table `users_table`
 --
 ALTER TABLE `users_table`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

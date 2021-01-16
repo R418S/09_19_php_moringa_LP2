@@ -13,15 +13,15 @@ if (
     !isset($_POST['message']) || $_POST['message'] == ''
 ) {
     // 項目が入力されていない場合はここでエラーを出力し，以降の処理を中止する
-    echo json_encode(["error_msg" => "no input"]);
-    exit();
+    // echo json_encode(["error_msg" => "no input"]);
+    // exit();
 }
 
 // 受け取ったデータを変数に入れる
 $name = $_POST['name'];
-$name = $_POST['email'];
-$name = $_POST['subject'];
-$name = $_POST['message'];
+$email = $_POST['email'];
+$subject = $_POST['subject'];
+$message = $_POST['message'];
 
 
 include('functions.php'); // 関数を記述したファイルの読み込み
@@ -38,8 +38,8 @@ $stmt->bindValue(':message', $message, PDO::PARAM_STR);
 $status = $stmt->execute();
 // var_dump($_POST);
 // exit();
-var_dump($_POST);
-exit();
+// var_dump($_POST);
+// exit();
 
 // データ登録処理後
 if ($status == false) {

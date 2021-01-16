@@ -10,7 +10,7 @@ include('functions.php'); // 関数を記述したファイルの読み込み
 $pdo = connect_to_db(); // 関数実行
 
 // idを指定して更新するSQLを作成 -> 実行の処理
-$sql = 'DELETE FROM contact_table WHERE id=:id';
+$sql = 'DELETE FROM manage_table WHERE id=:id';
 
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(':id', $id, PDO::PARAM_INT);
@@ -24,6 +24,6 @@ if ($status == false) {
     exit();
 } else {
     // 正常にSQLが実行された場合は入力ページファイルに移動し，入力ページの処理を実行する
-    header("Location:contact_read.php");
+    header("Location:manage_read.php");
     exit();
 }
